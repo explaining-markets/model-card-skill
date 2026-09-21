@@ -1,0 +1,102 @@
+{
+  "skill_name": "explaining-markets-model-card",
+  "notes": "Eval agents cannot talk to a person, so each case carries scripted participant answers. The agent must record every question it would have asked in questions.md; the question count is part of what is graded. Cases 1 and 3 run against the public explaining-markets/baseline-earnings-summary and explaining-markets/examples repos, checked out next to this one. The fixture repos for cases 2, 4 and 5 are not distributed with the skill; 4 and 5 are synthetic.",
+  "evals": [
+    {
+      "id": 1,
+      "name": "multi-submission-llm-baseline",
+      "repo": "../baseline-earnings-summary",
+      "prompt": "Write a model card for my Explaining Markets submission in this repo.",
+      "scripted_answers": {"which_submission": "the GPT-5 nano one", "disclosure": "Protect my IP"},
+      "expected_output": "Detects two submissions from one codebase and asks which; asks the disclosure question; minimal card for the GPT-5 nano variant.",
+      "assertions": [
+        "validator exits 0",
+        "marker says disclosure=minimal",
+        "questions.md records exactly two questions: which submission, then disclosure level",
+        "Approach is LLM / GenAI",
+        "Models is GPT-5.x and does not mention Gemini",
+        "Information set is competition facts",
+        "Learning / adaptation is zero-shot / prompted",
+        "Agent architecture is single-pass",
+        "Prediction construction is direct LLM score",
+        "validator reports no leak warnings",
+        "card contains no prompt text, model ID, framework name, or hosting vendor"
+      ]
+    },
+    {
+      "id": 2,
+      "name": "showcase-organizer-baseline",
+      "repo": "fixtures/organizer-baseline",
+      "prompt": "I need a model card for the DeepSeek V4 Flash summary entry. I want it to show off the engineering.",
+      "scripted_answers": {"which_submission": "DeepSeek V4 Flash — Summary", "disclosure": "already stated: Showcase my work"},
+      "expected_output": "Does not ask the disclosure question (already answered); showcase card comparable in substance to references/examples/showcase.md; no Representative prompt section unless asked.",
+      "assertions": [
+        "validator exits 0",
+        "marker says disclosure=showcase",
+        "the disclosure question is not asked",
+        "Models is DeepSeek",
+        "Model & harness names the exact model ID and sampling settings",
+        "no Representative prompt section, and the handover says it was left out",
+        "no secrets, webhook URLs, or environment values"
+      ]
+    },
+    {
+      "id": 3,
+      "name": "not-a-submission",
+      "repo": "../examples",
+      "prompt": "Make the model card for my Explaining Markets entry from this repo.",
+      "scripted_answers": {"describe_system": "It's a ridge regression on the earnings surprise and the 5-day pre-announcement return, fitted on the historical archive. Nothing else.", "disclosure": "Protect my IP"},
+      "expected_output": "Recognizes the repo is an exploration toolkit, not a submission; asks for a description; writes a minimal card from the description without attributing the repo's Claude summarization code to the participant.",
+      "assertions": [
+        "validator exits 0",
+        "the agent states the repo is not a submission",
+        "Approach is Traditional ML",
+        "Models is linear",
+        "Information set is earnings / fundamentals; prices / returns (estimates acceptable if the surprise is described as versus consensus)",
+        "Learning / adaptation is historically trained ML",
+        "Prediction construction is regression",
+        "Claude does not appear in the table"
+      ]
+    },
+    {
+      "id": 4,
+      "name": "single-submission-boosted-trees",
+      "repo": "fixtures/trees-repo",
+      "prompt": "Write the model card for my submission.",
+      "scripted_answers": {"disclosure": "Protect my IP"},
+      "expected_output": "Asks only the disclosure question; ignores the abandoned LLM experiment and the unused openai dependency; maps the vendor dataset to proprietary / other without naming it.",
+      "assertions": [
+        "validator exits 0",
+        "questions.md records exactly one question (disclosure level)",
+        "Approach is Traditional ML",
+        "Models is boosted trees, with no GPT family",
+        "Information set is earnings / fundamentals; estimates; prices / returns; peers / industry; proprietary / other",
+        "Learning / adaptation is historically trained ML; calibrated",
+        "Agent architecture is single-pass",
+        "Prediction construction is regression",
+        "card does not contain: LightGBM, isotonic, VendorX, WRDS, IBES, any feature name, any hyperparameter, training dates"
+      ]
+    },
+    {
+      "id": 5,
+      "name": "update-after-method-change",
+      "repo": "fixtures/trees-repo-updated",
+      "prompt": "I changed my agent last week. Can you bring the model card up to date?",
+      "scripted_answers": {},
+      "expected_output": "Keeps disclosure=minimal without asking; updates the table and prose for the added LLM blend; preserves still-accurate participant wording; lists what changed.",
+      "assertions": [
+        "validator exits 0",
+        "no questions asked",
+        "marker still says disclosure=minimal",
+        "Approach is Hybrid",
+        "Models is Claude; boosted trees",
+        "Information set now starts with competition facts",
+        "Learning / adaptation is zero-shot / prompted; historically trained ML; calibrated",
+        "Agent architecture includes ensemble",
+        "Prediction construction includes weighted / learned ensemble",
+        "blend weights (0.7 / 0.3) and the model ID are not disclosed",
+        "handover lists what changed"
+      ]
+    }
+  ]
+}
