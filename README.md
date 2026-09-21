@@ -1,5 +1,10 @@
 # Explaining Markets model card skill
 
+[![CI](https://github.com/explaining-markets/model-card-skill/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/explaining-markets/model-card-skill/actions/workflows/ci.yml)
+[![License: MIT](https://img.shields.io/github/license/explaining-markets/model-card-skill)](LICENSE)
+[![Python 3.8+](https://img.shields.io/badge/python-3.8%2B-blue)](skills/explaining-markets-model-card/scripts/validate_card.py)
+[![Agent Skills](https://img.shields.io/badge/Agent%20Skills-compatible-blue)](https://agentskills.io)
+
 A skill for AI coding agents that writes the model card for your [Explaining Markets](https://explainingmarkets.ai) submission. It reads your code, fills in the competition's standard card format, and leaves you a `MODEL_CARD.md` to paste into the portal. A submission needs a model card to be prize-eligible.
 
 It works in Claude Code, Codex, Cursor, Gemini CLI, GitHub Copilot, and other agents that support [Agent Skills](https://agentskills.io).
