@@ -1,6 +1,7 @@
 # Explaining Markets model card skill
 
 [![CI](https://github.com/explaining-markets/model-card-skill/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/explaining-markets/model-card-skill/actions/workflows/ci.yml)
+[![Release](https://img.shields.io/github/v/release/explaining-markets/model-card-skill?sort=semver)](https://github.com/explaining-markets/model-card-skill/releases)
 [![License: MIT](https://img.shields.io/github/license/explaining-markets/model-card-skill)](LICENSE)
 [![Python 3.8+](https://img.shields.io/badge/python-3.8%2B-blue)](skills/explaining-markets-model-card/scripts/validate_card.py)
 [![Agent Skills](https://img.shields.io/badge/Agent%20Skills-compatible-blue)](https://agentskills.io)
