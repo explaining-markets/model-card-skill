@@ -90,13 +90,13 @@ Use these values, in this order:
 
 1. `competition facts`: the fact summaries, or any other substantive material, that the competition supplies: delivered for the event through the official API, or taken from the competition's historical archive to fit a model. Reading only identifiers from the event notification (ticker, timestamps, the cutoff) does not count.
 2. `call / transcript`: earnings-call audio or transcripts obtained outside the competition API.
-3. `earnings / fundamentals`
-4. `estimates`
-5. `prices / returns`
-6. `filings`
-7. `historical company information`
-8. `peers / industry`
-9. `news / web`
+3. `earnings / fundamentals`: reported results and financial-statement data, for the current or past periods, and ratios built from them (margins, accruals, book-to-market).
+4. `estimates`: analyst forecasts and anything derived from them: consensus, revisions, dispersion, surprises measured against consensus.
+5. `prices / returns`: market data: prices, returns, volume, volatility, market capitalization, options.
+6. `filings`: regulatory filings read as documents (annual and quarterly reports, current reports), as opposed to numbers taken from a fundamentals database.
+7. `historical company information`: material about the company's own past that the categories above do not cover: earlier quarters' calls or fact summaries, how the stock reacted to its past announcements, company descriptions or profiles. Ordinary time series of fundamentals, estimates, or prices stay in their own categories, and fitting a model on historical events does not by itself put this value in the table.
+8. `peers / industry`: information about other companies or the sector: peers' results or reactions, industry classifications used as signals, sector aggregates.
+9. `news / web`: news articles, press coverage, social media, web search results, and other public web content.
 10. `proprietary / other`: proprietary, alternative, or otherwise nonstandard information, without identifying the source.
 
 Classify categories of information, not individual variables or features. Include information used to train or fit a model, not only what is read at prediction time. A quantity built from two categories belongs to both: an earnings surprise measured against analyst consensus is `earnings / fundamentals; estimates`.
