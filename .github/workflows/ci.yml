@@ -1,0 +1,37 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ["3.8", "3.13"]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Validator tests
+        run: python -m unittest discover -s tests -v
+      - name: Bundled examples pass the validator
+        run: |
+          for card in skills/explaining-markets-model-card/references/examples/*.md; do
+            python skills/explaining-markets-model-card/scripts/validate_card.py "$card"
+          done
+
+  skill-spec:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+      - name: Validate against the Agent Skills specification
+        run: |
+          pip install "git+https://github.com/agentskills/agentskills.git#subdirectory=skills-ref"
+          skills-ref validate skills/explaining-markets-model-card
