@@ -1,0 +1,104 @@
+{
+  "format": "em-model-card",
+  "version": 1,
+  "disclosure_levels": ["minimal", "showcase"],
+  "separator": "; ",
+  "sentinels": ["Unknown", "Not disclosed", "None"],
+  "max_chars": 10000,
+  "target_chars": 6000,
+  "table_header": ["Category", "Classification"],
+  "section_heading_level": 2,
+  "sections": [
+    {"title": "What is predicted", "required": true},
+    {"title": "Input context", "required": true},
+    {"title": "Model & harness", "required": true},
+    {"title": "Representative prompt", "required": false, "disclosure": "showcase"},
+    {"title": "Data flow", "required": true},
+    {"title": "Limitations", "required": true}
+  ],
+  "fields": [
+    {
+      "key": "approach",
+      "label": "Approach",
+      "select": "single",
+      "values": ["LLM / GenAI", "Traditional ML", "Hybrid", "Rules / statistical", "Other"]
+    },
+    {
+      "key": "models",
+      "label": "Models",
+      "select": "multi",
+      "open_vocabulary": true,
+      "open_vocabulary_note": "Public generative-AI family names, sorted alphabetically, come first; the fixed values below follow in the order listed.",
+      "known_ai_families": ["Claude", "DeepSeek", "Gemini", "GPT-5.x", "Llama", "Mistral", "Qwen"],
+      "values": [
+        "linear",
+        "boosted trees",
+        "neural network",
+        "embedding model",
+        "time-series model",
+        "Bayesian model",
+        "rules / statistical",
+        "other"
+      ]
+    },
+    {
+      "key": "information_set",
+      "label": "Information set",
+      "select": "multi",
+      "values": [
+        "competition facts",
+        "call / transcript",
+        "earnings / fundamentals",
+        "estimates",
+        "prices / returns",
+        "filings",
+        "historical company information",
+        "peers / industry",
+        "news / web",
+        "proprietary / other"
+      ]
+    },
+    {
+      "key": "learning",
+      "label": "Learning / adaptation",
+      "select": "multi",
+      "values": [
+        "zero-shot / prompted",
+        "in-context examples",
+        "historically trained ML",
+        "fine-tuned LLM",
+        "calibrated",
+        "online / in-quarter updating"
+      ]
+    },
+    {
+      "key": "architecture",
+      "label": "Agent architecture",
+      "select": "multi",
+      "mutually_exclusive": [["single-pass", "multi-stage"]],
+      "values": [
+        "single-pass",
+        "multi-stage",
+        "retrieval-augmented",
+        "tool-using",
+        "multiple agents / roles",
+        "self-consistency / committee",
+        "ensemble"
+      ]
+    },
+    {
+      "key": "prediction_construction",
+      "label": "Prediction construction",
+      "select": "multi",
+      "values": [
+        "direct LLM score",
+        "classification → score",
+        "regression",
+        "ranking",
+        "similarity / retrieval",
+        "weighted / learned ensemble",
+        "Other"
+      ]
+    }
+  ]
+}
