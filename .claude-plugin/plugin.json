@@ -1,0 +1,10 @@
+{
+  "name": "explaining-markets",
+  "description": "Write the model card for an Explaining Markets competition submission in the standard format.",
+  "author": {
+    "name": "Explaining Markets"
+  },
+  "homepage": "https://explainingmarkets.ai",
+  "repository": "https://github.com/explaining-markets/model-card-skill",
+  "license": "MIT"
+}

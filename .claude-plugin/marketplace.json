@@ -1,0 +1,16 @@
+{
+  "name": "explaining-markets",
+  "owner": {
+    "name": "Explaining Markets"
+  },
+  "metadata": {
+    "description": "Skills for participants in the Explaining Markets competition."
+  },
+  "plugins": [
+    {
+      "name": "explaining-markets",
+      "source": "./",
+      "description": "Write the model card for an Explaining Markets competition submission in the standard format."
+    }
+  ]
+}
